@@ -1,2 +1,5 @@
-# chatroom
-simple chatroom
+基于TCP的网络聊天室
+服务端：使用epoll监听每个客户端，收到消息之后广播给其他客户端
+客户端：创建一个子进程，父子进程间使用pipe通信。
+       子进程获取用户输入，并写入pipe。
+       父进程使用epoll监听socket和pipe，将socket发送来的消息显示给用户，将从pipe读到的信息发送给服务端。
